@@ -1,0 +1,19 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="x11542_order_type.list">
+      <field name="name">x11542_order_type list</field>
+      <field name="model">x11542.order.type</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+       </tree>
+      </field>
+    </record>
+	
+<act_window id="action_x11542_order_type" name="Order Type" res_model="x11542.order.type" view_mode="tree,form"/>
+	
+<menuitem   id="menu_x11542_order_type"    parent="sale.menu_sales_config" name="Order Type" action="action_x11542_order_type" />
+
+  </data>
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<odoo>
+	<report id="action_sales_order_print"
+		string="Print Sales Orders"
+		model ="sale.order"
+		report_type="qweb-html"
+		name = "x11542_sales_order_print.sale_order_template"
+	/>
+	<template id="sale_order_template">
+	<t t-call="report.html_container">
+		<t t-call="report.external_layout">
+			<div class="page">
+			<t t-foreach="docs" t-as="o">
+			<table width="100%" >
+			<tr  style="line-height: 50px">
+			<td align="center" style="font-size:25px;"><b><u>SALES ORDER 11542</u></b></td>
+			</tr>
+			</table>
+			<table width="100%">
+			<tr>
+			<td><b>Serial No. </b></td>
+			<td> <span t-field="o.name" /> </td>
+			<td width="50%"></td>
+			<td><b>Date: </b></td>
+			<td align="right"><span t-field="o.confirmation_date" /></td>
+			</tr>
+			<tr>
+			<td><b>Customer Name:</b></td>
+			<td> <span t-field="o.partner_id" /> </td>
+			<td width="50%"></td>
+			<td><b>Address:</b></td>
+			<td align="right"> <span t-field="o.partner_id.street" /> </td>
+			</tr>
+			<tr>
+			<td><b>Product Name</b></td>
+			<td><b>Quantity</b></td>
+			<td><b>Unit Price</b></td>				
+			<td><b>Amount</b></td>				
+			</tr>
+			<t t-foreach="o.order_line" t-as="l">
+			<tr>
+			<td> <span t-field="l.product_id" /> </td>
+			<td> <span t-field="l.product_uom_qty" /> </td>
+			<td> <span t-field="l.price_unit" /> </td>
+			<td> <span t-field="l.price_total" /> </td>
+			</tr>
+			</t>
+<td align="right"><span t-esc="'{:,}'.format(int(float(round(sum(l.price_unit * l.product_uom_qty for l in o.order_line),0))))"/></td>			
+			</table>
+		</t>
+	</div>
+	</t>
+	</t>
+</template>
+</odoo>

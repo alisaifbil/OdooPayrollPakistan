@@ -1,0 +1,21 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="x_fine.list">
+      <field name="name">x_fine list</field>
+      <field name="model">x.fine</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="amount"/>
+       </tree>
+      </field>
+    </record>
+    
+<act_window id="action_x_fine" name="Fine Type" res_model="x.fine" view_mode="tree,form"/>
+    
+<menuitem   id="menu_x_fine" parent="hr_payroll.menu_hr_payroll_root"
+  name="Fine Type" action="action_x_fine" />
+
+  </data>
+</odoo>

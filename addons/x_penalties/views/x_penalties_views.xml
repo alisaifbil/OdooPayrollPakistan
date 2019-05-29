@@ -1,0 +1,23 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="x_penalties.list">
+      <field name="name">x_penalties list</field>
+      <field name="model">x_penalties</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="pemployee"/>
+          <field name="pfinetype"/>
+          <field name="pfineamount"/>
+          <field name="pdatefrom"/>
+          <field name="pdateto"/>
+       </tree>
+      </field>
+    </record>
+    
+<act_window id="action_x_penalties" name="Penalties" res_model="x_penalties" view_mode="tree,form"/>
+    
+<menuitem   id="menu_x_penalties" parent="hr_payroll.menu_hr_payroll_root" name="Penalties" action="action_x_penalties" />
+
+  </data>
+</odoo>
